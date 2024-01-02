@@ -29,8 +29,7 @@ const ColorText = styled.p<DirectionProps>`
 `;
 
 const Color: FC<Props> = ({ color, number, direction }) => {
-    // src/colordata/${color}/${number}/${c}.json から読み込む
-    const jsonFilePath = `src/colordata/${color}/${number}.json`;
+    const jsonFilePath = `https://kanakanho.github.io/Munsell-Color/processing/json/${color}/${number}.json`;
     const [data, setData] = useState<Record<string, Record<string, object>>>({});
     const [colorName, setColorName] = useState<string>("");
 

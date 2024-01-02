@@ -1,5 +1,6 @@
 import { FC } from "react";
 import styled from "styled-components";
+import { FaGithub } from "react-icons/fa";
 
 const HeaderContainer = styled.div`
     background-color: #000;
@@ -25,18 +26,14 @@ const GithubLink = styled.a`
     position: fixed;
     bottom: 2vw;
     left: 0.8vw;
-    color: #fff;
+    color: #000;
+    font-size: 1.5rem;
     text-decoration: none;
     background-color: #fff;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-`;
-
-const Image = styled.img`
-    width: 1.8vw;
-    height: 1.8vw;
 `;
 
 const Header: FC = () => {
@@ -46,7 +43,7 @@ const Header: FC = () => {
                 <Text>Munsell-Color</Text>
             </TextContainer>
             <GithubLink href="https://github.com/kanakanho" target="_blank">
-                <Image src="src/assets/github.svg" alt="github" />
+                <FaGithub />
             </GithubLink>
         </HeaderContainer>
     );

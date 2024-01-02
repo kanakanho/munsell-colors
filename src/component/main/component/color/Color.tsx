@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { styled } from "styled-components";
-import ColorObject from "./ColorObject";
+import ColorObject from "./utils/ColorObject";
 
 type Props = {
     color: string;
@@ -21,9 +21,9 @@ const ColorContainer = styled.div<DirectionProps>`
 `;
 
 const ColorText = styled.p<DirectionProps>`
-    transform: ${(props) => (props.direction ? "scaleX(1) translate(-1vw, 1vw)" : "scaleX(-1) translate(0.5vw, 1vw)")}  ;
+    transform: ${(props) => (props.direction ? "scaleX(1) translate(-1vw, 1vw)" : "scaleX(-1) translate(0.5vw, 1vw)")};
     display: flex;
-    justify-content:${(props) => (props.direction ? "flex-end" : "flex-start")} ;
+    justify-content: ${(props) => (props.direction ? "flex-end" : "flex-start")};
     font-weight: bold;
     line-height: 0;
 `;

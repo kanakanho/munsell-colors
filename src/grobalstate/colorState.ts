@@ -5,15 +5,15 @@ import { colors, numbers, colorCodes } from "../component/utils/colors";
 export const colorState = atom({
     key: "colorState",
     default: {
-        ColorLeft: {
+        colorLeft: {
             color: colors[0],
             number: numbers[0],
-            colorCode: colorCodes[0],
+            colorCode: "ffffff",
         },
-        ColorRight: {
+        colorRight: {
             color: colors[0],
             number: numbers[0],
-            colorCode: colorCodes[0],
+            colorCode: "000000",
         }
     },
     dangerouslyAllowMutability: true,
@@ -34,7 +34,7 @@ export const useColorMutators = () => {
         }) => {
             setColorState((prev) => ({
                 ...prev,
-                right: rightColorObj,
+                colorRight: rightColorObj,
             }));
         },
         [setColorState]
@@ -48,7 +48,7 @@ export const useColorMutators = () => {
         }) => {
             setColorState((prev) => ({
                 ...prev,
-                left: leftColorObj,
+                colorLeft: leftColorObj,
             }));
         },
         [setColorState]

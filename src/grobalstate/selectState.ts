@@ -32,9 +32,10 @@ export const useSelectMutators = () => {
             number: string;
             colorCode: string;
         }) => {
+            console.log("rightSelectObj", rightSelectObj);
             setSelectState((prev) => ({
                 ...prev,
-                right: rightSelectObj,
+                selectRight: rightSelectObj,
             }));
         },
         [setSelectState]
@@ -46,9 +47,10 @@ export const useSelectMutators = () => {
             number: string;
             colorCode: string;
         }) => {
+            console.log("leftSelectObj", leftSelectObj);
             setSelectState((prev) => ({
                 ...prev,
-                left: leftSelectObj,
+                selectLeft: leftSelectObj,
             }));
         },
         [setSelectState]

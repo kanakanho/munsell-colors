@@ -5,7 +5,7 @@ import { colorCodes, colors, numbers } from "../utils/colors";
 import ArrowButton from "./component/utils/ArrowButton";
 import Circle from "./component/circle/Circle";
 import { useColorMutators, useColorState } from "../../grobalstate/colorState";
-import Selection from "./component/selection/Selection";
+import Selection from "./component/selection/Select";
 
 type Props = {
     position: string;
@@ -35,21 +35,20 @@ const ColorCard: FC<Props> = ({ position }) => {
     const [color, setColor] = useState<string>(colors[0]);
     const [number, setNumber] = useState<string>(numbers[0]);
 
-    const { ColorLeft, ColorRight } = useColorState();
-    const { setLeftColorState, setRightColorState } = useColorMutators(); 
+    const { colorLeft, colorRight } = useColorState();
+    const { setLeftColorState, setRightColorState } = useColorMutators();
 
     const direction = position === "right" ? true : false;
 
     useEffect(() => {
         if (direction) {
-            setColor(ColorLeft.color);
-            setNumber(ColorLeft.number);
+            setColor(colorRight.color);
+            setNumber(colorRight.number);
         } else {
-            setColor(ColorRight.color);
-            setNumber(ColorRight.number);
+            setColor(colorLeft.color);
+            setNumber(colorLeft.number);
         }
-    }
-    , [ColorLeft, ColorRight, direction]);
+    }, [colorLeft, colorRight, direction]);
 
     const setColorId = ({ color, number }: { color: string; number: string }) => {
         setColor(color);
@@ -61,13 +60,16 @@ const ColorCard: FC<Props> = ({ position }) => {
         const colorCode = colorCodes[colorId];
         const colorObj = { color, number, colorCode };
         if (direction) {
-            setLeftColorState(colorObj);
-        } else {
             setRightColorState(colorObj);
+        } else {
+            setLeftColorState(colorObj);
         }
     };
 
-    const memoizedColor = useMemo(() => <Color color={color} number={number} direction={direction} />, [color, number,direction]);
+    const memoizedColor = useMemo(
+        () => <Color color={color} number={number} direction={direction} />,
+        [color, number, direction]
+    );
 
     const memoizedArrowButton = useMemo(
         () => <ArrowButton color={color} number={number} setColorId={setColorId} />,

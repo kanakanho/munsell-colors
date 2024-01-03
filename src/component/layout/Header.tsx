@@ -1,26 +1,29 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { FaGithub } from "react-icons/fa";
+import { useColorState } from "../../grobalstate/colorState";
 
-const HeaderContainer = styled.div`
-    background-color: #000;
+type color = {
+    color: string;
+};
+
+const HeaderContainer = styled.div<color>`
+    background-color: #${(props) => props.color};
     position: fixed;
     height: 100vh;
     width: max(4vw);
 `;
 
-const TextContainer = styled.div`
+const TextContainer = styled.div<color>`
     display: flex;
     justify-content: flex-end;
-    color: #fff;
+    color: #${(props) => props.color};
     font-size: 1.5rem;
     transform: rotate(-90deg) translateX(-4vh);
     white-space: nowrap;
 `;
 
-const Text = styled.p``;
-
-const GithubLink = styled.a`
+const GithubLink = styled.a<color>`
     width: 2.5vw;
     height: 2.5vw;
     position: fixed;
@@ -29,7 +32,7 @@ const GithubLink = styled.a`
     color: #000;
     font-size: 1.5rem;
     text-decoration: none;
-    background-color: #fff;
+    background-color: #${(props) => props.color};
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -37,12 +40,11 @@ const GithubLink = styled.a`
 `;
 
 const Header: FC = () => {
+    const { colorRight,colorLeft } = useColorState();
     return (
-        <HeaderContainer>
-            <TextContainer>
-                <Text>Munsell-Color</Text>
-            </TextContainer>
-            <GithubLink href="https://github.com/kanakanho" target="_blank">
+        <HeaderContainer color={colorRight.colorCode}>
+            <TextContainer color={colorLeft.colorCode}>Munsell-Color</TextContainer>
+            <GithubLink color={colorLeft.colorCode} href="https://github.com/kanakanho" target="_blank">
                 <FaGithub />
             </GithubLink>
         </HeaderContainer>

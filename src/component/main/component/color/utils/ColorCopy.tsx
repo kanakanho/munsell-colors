@@ -6,23 +6,22 @@ type Props = {
     direction: boolean;
     colorCode: string;
     children: React.ReactNode;
-}
+};
 
 const ColorCopy: FC<Props> = ({ direction, colorCode, children }) => {
     const { setRightSelectState, setLeftSelectState } = useSelectMutators();
-    const { ColorLeft, ColorRight } = useColorState();
+    const { colorLeft, colorRight } = useColorState();
     const ColorCopy = () => {
         navigator.clipboard.writeText(colorCode);
         if (direction) {
-            const colorObj = { ...ColorLeft, colorCode };
-            console.log(colorObj);
-            setLeftSelectState(colorObj);
-        } else {
-            const colorObj = { ...ColorRight, colorCode };
-            console.log(colorObj);
+            const colorObj = { ...colorRight, colorCode };
+            console.log("right" ,colorObj);
             setRightSelectState(colorObj);
+        } else {
+            const colorObj = { ...colorLeft, colorCode };
+            console.log("left" ,colorObj);
+            setLeftSelectState(colorObj);
         }
-
     };
 
     return <div onClick={() => ColorCopy()}>{children}</div>;

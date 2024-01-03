@@ -33,13 +33,13 @@ const ColorItem = styled.div<position>`
 
 const Circle: FC<Props> = ({ direction }) => {
     const { setLeftColorState, setRightColorState } = useColorMutators();
-    const { ColorLeft, ColorRight } = useColorState();
+    const { colorLeft, colorRight } = useColorState();
 
     const vw = window.innerWidth / 100;
     const imgNum = colors.length * numbers.length;
     const deg = 360 / imgNum;
     const red = (deg * Math.PI) / 180;
-    const radius = vw ;
+    const radius = vw;
     const positionYs: number[] = [];
     const positionXs: number[] = [];
     for (let i = 0; i < imgNum; i++) {
@@ -56,16 +56,16 @@ const Circle: FC<Props> = ({ direction }) => {
     };
 
     if (direction) {
-        colorObj = ColorLeft;
+        colorObj = colorRight;
     } else {
-        colorObj = ColorRight;
+        colorObj = colorLeft;
     }
 
     const setColor = (newColorObj: colorType) => {
         if (direction) {
-            setLeftColorState(newColorObj);
-        } else {
             setRightColorState(newColorObj);
+        } else {
+            setLeftColorState(newColorObj);
         }
     };
 

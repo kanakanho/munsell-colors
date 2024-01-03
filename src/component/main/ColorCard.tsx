@@ -1,12 +1,8 @@
-import { FC, useMemo, useState } from "react";
+import { FC, useState } from "react";
 import { styled } from "styled-components";
 import Color from "./component/color/Color";
-import { colors, numbers } from "../utils/colors";
+import { colors, numbers } from "../utils/ColorList";
 import ArrowButton from "./component/utils/ArrowButton";
-
-type Props = {
-    position: string;
-};
 
 const ColorCardContainer = styled.div`
     position: fixed;
@@ -23,33 +19,27 @@ const ColorContainer = styled.div`
 const ArrowButtonContainer = styled.div`
     width: 46vw;
     position: fixed;
-    padding: 0 1vw;
     bottom: 1.2vw;
-    display: grid;
+    left: 5vw;
 `;
 
-const ColorCard: FC<Props> = ({ position }) => {
+const ColorCard: FC = () => {
     const [color, setColor] = useState<string>(colors[0]);
     const [number, setNumber] = useState<string>(numbers[0]);
-
-    const direction = position === "right" ? true : false;
 
     const setColorId = ({ color, number }: { color: string; number: string }) => {
         setColor(color);
         setNumber(number);
-    };
-
-    const memoizedColor = useMemo(() => <Color color={color} number={number} direction={direction} />, [color, number]);
-
-    const memoizedArrowButton = useMemo(
-        () => <ArrowButton color={color} number={number} setColorId={setColorId} />,
-        [color, number]
-    );
+    }
 
     return (
         <ColorCardContainer>
-            <ColorContainer>{memoizedColor}</ColorContainer>
-            <ArrowButtonContainer>{memoizedArrowButton}</ArrowButtonContainer>
+            <ColorContainer>
+                <Color color={color} number={number} direction={false} />
+            </ColorContainer>
+            <ArrowButtonContainer>
+                <ArrowButton color={color} number={number} setColorId={setColorId}/>
+            </ArrowButtonContainer>
         </ColorCardContainer>
     );
 };

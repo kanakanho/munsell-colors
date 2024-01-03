@@ -1,24 +1,18 @@
 import { FC } from "react";
 import { styled } from "styled-components";
 import Color from "./component/color/Color";
-import { colors, numbers } from "../utils/colors";
-
-type Props = {
-    position: string;
-};
+import { colors, numbers } from "../utils/ColorList";
 
 const ColorScrollContainer = styled.div`
     width: 48vw;
-    overflow: scroll;
-    height: 100vh;
+    overflow: auto;
 `;
 
 const ColorContainer = styled.div`
     margin: 1vw;
 `;
 
-const ColorScroll: FC<Props> = ({ position }) => {
-    const direction = position === "right" ? true : false;
+const ColorScroll: FC = () => {
     return (
         <ColorScrollContainer>
             {[...colors, ...colors].map((color, index) => {
@@ -27,7 +21,7 @@ const ColorScroll: FC<Props> = ({ position }) => {
                         {numbers.map((number, index) => {
                             return (
                                 <ColorContainer key={index}>
-                                    <Color key={index} color={color} number={number} direction={direction} />
+                                    <Color key={index} color={color} number={number} direction={true} />
                                 </ColorContainer>
                             );
                         })}

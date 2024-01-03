@@ -26,6 +26,8 @@ const ColorText = styled.p<DirectionProps>`
     justify-content: ${(props) => (props.direction ? "flex-end" : "flex-start")};
     font-weight: bold;
     line-height: 0;
+    font-size: 1.5vw;
+    color: #444;
 `;
 
 const Color: FC<Props> = ({ color, number, direction }) => {
@@ -45,7 +47,7 @@ const Color: FC<Props> = ({ color, number, direction }) => {
         <ColorContainer direction={direction}>
             <ColorText direction={direction}>{colorName}</ColorText>
             {Object.keys(data).map((key, index) => {
-                return <ColorObject key={index} colorObject={data[key]} />;
+                return <ColorObject key={index} colorObject={data[key]} direction={direction}/>;
             })}
         </ColorContainer>
     );

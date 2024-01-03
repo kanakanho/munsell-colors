@@ -15,7 +15,6 @@ const SwitchButtonContainer = styled.div`
 
 const LeftButton: FC = () => {
     const { left: leftMode } = useModeState();
-    console.log(leftMode);
     const { setLeftModeState } = useModeMutators();
 
     return (

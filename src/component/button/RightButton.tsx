@@ -15,7 +15,6 @@ const SwitchButtonContainer = styled.div`
 
 const RightButton: FC = () => {
     const { right: rightMode } = useModeState();
-    console.log(rightMode);
     const { setRightModeState } = useModeMutators();
 
     return (

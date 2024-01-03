@@ -5,6 +5,7 @@ import ColorCopy from "./ColorCopy";
 
 type Props = {
     colorObject: Record<string, object>;
+    direction: boolean;
 };
 
 const ColorObjectContainer = styled.div`
@@ -15,7 +16,7 @@ const ColorObjectContainer = styled.div`
     padding: 2px;
 `;
 
-const ColorObject: FC<Props> = ({ colorObject }) => {
+const ColorObject: FC<Props> = ({ colorObject,direction }) => {
     return (
         <ColorObjectContainer>
             {Object.keys(colorObject).map((key, index) => {
@@ -23,7 +24,7 @@ const ColorObject: FC<Props> = ({ colorObject }) => {
                     return;
                 }
                 return (
-                    <ColorCopy key={index} colorCode={colorObject[key].toString()}>
+                    <ColorCopy key={index} colorCode={colorObject[key].toString()} direction={direction}>
                         <ColorTile key={index} colorCode={colorObject[key].toString()} />
                     </ColorCopy>
                 );

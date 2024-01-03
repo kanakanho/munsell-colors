@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { atom, useRecoilValue, useSetRecoilState } from "recoil";
-import { colors, numbers, colorCodes } from "../component/utils/colors";
+import { colors, numbers } from "../component/utils/colors";
 
 export const colorState = atom({
     key: "colorState",

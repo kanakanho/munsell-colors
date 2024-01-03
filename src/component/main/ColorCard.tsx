@@ -50,6 +50,7 @@ const ColorCard: FC<Props> = ({ position }) => {
         }
     }, [colorLeft, colorRight, direction]);
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const setColorId = ({ color, number }: { color: string; number: string }) => {
         setColor(color);
         setNumber(number);
@@ -73,7 +74,7 @@ const ColorCard: FC<Props> = ({ position }) => {
 
     const memoizedArrowButton = useMemo(
         () => <ArrowButton color={color} number={number} setColorId={setColorId} />,
-        [color, number]
+        [color, number, setColorId]
     );
 
     return (

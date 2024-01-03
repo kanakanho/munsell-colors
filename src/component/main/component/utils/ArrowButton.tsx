@@ -2,7 +2,7 @@ import { FC } from "react";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { styled } from "styled-components";
-import { colors, numbers } from "../../../utils/colors";
+import { colors, numbers } from "./../../../utils/ColorList";
 
 type Props = {
     color: string;
@@ -39,7 +39,7 @@ const Text = styled.p`
     padding: 0 0.5vw;
 `;
 
-const ArrowButton: FC<Props> = ({ color, number, setColorId }) => {
+const ArrowButton: FC<Props> = ({ color, number, setColorId}) => {
     let nextNumber = number;
     if (numbers.indexOf(number) === numbers.length - 1) {
         nextNumber = numbers[0];
@@ -59,7 +59,7 @@ const ArrowButton: FC<Props> = ({ color, number, setColorId }) => {
         // nextColor = colors[colors.indexOf(color) + 1];
         if (colors.indexOf(color) === colors.length - 1) {
             nextColor = colors[0];
-        } else {
+        }else {
             nextColor = colors[colors.indexOf(color) + 1];
         }
     } else if (numbers.indexOf(number) === 0) {

@@ -14,6 +14,9 @@ type Props = {
 const ColorCardContainer = styled.div`
     position: fixed;
     width: 48vw;
+    @media screen and (max-width: 600px) {
+        width: 98vw;
+    }
 `;
 
 const ColorContainer = styled.div`
@@ -21,6 +24,9 @@ const ColorContainer = styled.div`
     position: fixed;
     bottom: 0vw;
     margin: 1vw 1vw 0.5vw 1vw;
+    @media screen and (max-width: 600px) {
+        width: 98vw;
+    }
 `;
 
 const ArrowButtonContainer = styled.div`
@@ -29,6 +35,10 @@ const ArrowButtonContainer = styled.div`
     padding: 0 1vw;
     bottom: 25vw;
     display: grid;
+    @media screen and (max-width: 600px) {
+        width: 98vw;
+        bottom: 50vw;
+    }
 `;
 
 const ColorCard: FC<Props> = ({ position }) => {

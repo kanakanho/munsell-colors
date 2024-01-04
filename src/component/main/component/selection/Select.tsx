@@ -11,6 +11,10 @@ const SelectLeftContainer = styled.div`
     position: fixed;
     top: 7.5vw;
     left: 18.5vw;
+    @media screen and (max-width: 600px) {
+        top: 48vw;
+        left: 30vw;
+    }
 `;
 
 const SelectRightContainer = styled.div`

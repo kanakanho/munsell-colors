@@ -13,6 +13,9 @@ const ButtonContainer = styled.div`
     display: flex;
     justify-content: space-between;
     position: relative;
+    @media screen and (max-width: 600px) {
+        margin-left: 0;
+    }
 `;
 
 const MainContainer = styled.main`
@@ -20,9 +23,15 @@ const MainContainer = styled.main`
     display: grid;
     grid-template-columns: 1fr 1fr;
     z-index: 1;
+    @media screen and (max-width: 600px) {
+        margin-left: 0;
+    }
 `;
 const CardContainer = styled.div`
     width: 48vw;
+    @media screen and (max-width: 600px) {
+        width: 100vw;
+    }
 `;
 
 const ColorScrollContainer = styled.div`
@@ -31,6 +40,7 @@ const ColorScrollContainer = styled.div`
 
 const Layout: FC = () => {
     const mode = useModeState();
+    const width = window.innerWidth;
     return (
         <>
             <Header />
@@ -44,19 +54,21 @@ const Layout: FC = () => {
                         <ColorScroll position={"left"} />
                     </ColorScrollContainer>
                 )}
-                {mode.right === "card" ? (
-                    <CardContainer>
-                        <ColorCard position={"right"} />
-                    </CardContainer>
-                ) : (
-                    <ColorScrollContainer>
-                        <ColorScroll position={"right"} />
-                    </ColorScrollContainer>
-                )}
+                {width > 768 ? (
+                    mode.right === "card" ? (
+                        <CardContainer>
+                            <ColorCard position={"right"} />
+                        </CardContainer>
+                    ) : (
+                        <ColorScrollContainer>
+                            <ColorScroll position={"right"} />
+                        </ColorScrollContainer>
+                    )
+                ) : null}
             </MainContainer>
             <ButtonContainer>
                 <LeftButton />
-                <RightButton />
+                {width > 768 ? <RightButton /> : null}
             </ButtonContainer>
         </>
     );

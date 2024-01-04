@@ -11,6 +11,11 @@ const ColorScrollContainer = styled.div`
     width: 48vw;
     overflow: scroll;
     height: 100vh;
+    @media screen and (max-width: 600px) {
+        width: 100vw;
+        /* 10vw 下に下げる */
+        margin-top: 10vw;
+    }
 `;
 
 const ColorContainer = styled.div`

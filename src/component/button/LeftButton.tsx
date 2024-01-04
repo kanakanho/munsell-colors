@@ -11,6 +11,10 @@ const SwitchButtonContainer = styled.div`
     background-color: #f3f3f3;
     padding: 0.5vw;
     border-radius: 0.3vw;
+    @media screen and (max-width: 600px) {
+        top: 2vw;
+        left: 2vw;
+    }
 `;
 
 const LeftButton: FC = () => {

@@ -12,6 +12,12 @@ const HeaderContainer = styled.div<color>`
     position: fixed;
     height: 100vh;
     width: max(4vw);
+
+    @media screen and (max-width: 600px) {
+        width: 100vw;
+        height: max(8vw);
+        padding: 1vw 0;
+    }
 `;
 
 const TextContainer = styled.div<color>`
@@ -21,6 +27,11 @@ const TextContainer = styled.div<color>`
     font-size: 1.5rem;
     transform: rotate(-90deg) translateX(-4vh);
     white-space: nowrap;
+
+    @media screen and (max-width: 600px) {
+        transform: none;
+        justify-content: center;
+    }
 `;
 
 const GithubLink = styled.a<color>`
@@ -37,10 +48,19 @@ const GithubLink = styled.a<color>`
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media screen and (max-width: 600px) {
+        width: 6vw;
+        height: 6vw;
+        top: 2vw;
+        right: 2vw;
+        left: auto;
+        font-size: 1.2rem;
+    }
 `;
 
 const Header: FC = () => {
-    const { colorRight,colorLeft } = useColorState();
+    const { colorRight, colorLeft } = useColorState();
     return (
         <HeaderContainer color={colorRight.colorCode}>
             <TextContainer color={colorLeft.colorCode}>Munsell-Color</TextContainer>

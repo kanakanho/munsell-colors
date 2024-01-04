@@ -19,6 +19,10 @@ const CircleContainer = styled.div`
     left: 4vw;
     border-radius: 50%;
     background-color: aqua;
+    @media screen and (max-width: 600px) {
+        top: 50vw;
+        left: 25vw;
+    }
 `;
 
 const ImgContainer = styled.div<Props>`
@@ -35,11 +39,16 @@ const Circle: FC<Props> = ({ direction }) => {
     const { setLeftColorState, setRightColorState } = useColorMutators();
     const { colorLeft, colorRight } = useColorState();
 
+    const width = window.innerWidth;
+
     const vw = window.innerWidth / 100;
     const imgNum = colors.length * numbers.length;
     const deg = 360 / imgNum;
     const red = (deg * Math.PI) / 180;
-    const radius = vw;
+    let radius = vw;
+    if (width < 768) {
+        radius = vw * 10;
+    }
     const positionYs: number[] = [];
     const positionXs: number[] = [];
     for (let i = 0; i < imgNum; i++) {

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { styled } from "styled-components";
 import { colors, numbers, colorCodes } from "./../../../utils/colors";
 import { useColorMutators, useColorState } from "../../../../grobalstate/colorState";
@@ -19,6 +19,9 @@ const CircleContainer = styled.div`
     left: 4vw;
     border-radius: 50%;
     background-color: aqua;
+    @media screen and (max-width: 1200px) {
+        top: 8vw;
+    }
     @media screen and (max-width: 600px) {
         top: 50vw;
         left: 25vw;
@@ -38,14 +41,27 @@ const ColorItem = styled.div<position>`
 const Circle: FC<Props> = ({ direction }) => {
     const { setLeftColorState, setRightColorState } = useColorMutators();
     const { colorLeft, colorRight } = useColorState();
+    const [width, setWidth] = useState<number>(window.innerWidth);
 
-    const width = window.innerWidth;
+    // 画面サイズによって円の半径を変更
+    useEffect(() => {
+        const handleResize = () => {
+            setWidth(window.innerWidth);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, [width]);
 
     const vw = window.innerWidth / 100;
     const imgNum = colors.length * numbers.length;
     const deg = 360 / imgNum;
     const red = (deg * Math.PI) / 180;
     let radius = vw;
+    if (width < 1200) {
+        radius = vw * 1.6;
+    }
     if (width < 768) {
         radius = vw * 10;
     }

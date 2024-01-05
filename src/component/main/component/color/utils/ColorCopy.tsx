@@ -15,11 +15,9 @@ const ColorCopy: FC<Props> = ({ direction, colorCode, children }) => {
         navigator.clipboard.writeText(colorCode);
         if (direction) {
             const colorObj = { ...colorRight, colorCode };
-            console.log("right" ,colorObj);
             setRightSelectState(colorObj);
         } else {
             const colorObj = { ...colorLeft, colorCode };
-            console.log("left" ,colorObj);
             setLeftSelectState(colorObj);
         }
     };

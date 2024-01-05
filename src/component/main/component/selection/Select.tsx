@@ -24,6 +24,9 @@ const SelectRightContainer = styled.div`
     position: fixed;
     top: 7.5vw;
     left: 66.5vw;
+    @media screen and (max-width: 1200px) {
+        top: 15vw;
+    }
 `;
 
 const Select: FC<Props> = ({ direction }) => {

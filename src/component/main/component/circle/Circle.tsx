@@ -20,7 +20,7 @@ const CircleContainer = styled.div`
     border-radius: 50%;
     background-color: aqua;
     @media screen and (max-width: 1200px) {
-        top: 6vw;
+        top: 8vw;
     }
     @media screen and (max-width: 600px) {
         top: 50vw;
@@ -46,7 +46,6 @@ const Circle: FC<Props> = ({ direction }) => {
     // 画面サイズによって円の半径を変更
     useEffect(() => {
         const handleResize = () => {
-            console.log(width);
             setWidth(window.innerWidth);
         };
         window.addEventListener("resize", handleResize);

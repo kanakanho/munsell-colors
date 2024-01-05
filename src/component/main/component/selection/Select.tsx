@@ -11,6 +11,9 @@ const SelectLeftContainer = styled.div`
     position: fixed;
     top: 7.5vw;
     left: 18.5vw;
+    @media screen and (max-width: 1200px) {
+        top: 15vw;
+    }
     @media screen and (max-width: 600px) {
         top: 48vw;
         left: 30vw;
@@ -25,7 +28,6 @@ const SelectRightContainer = styled.div`
 
 const Select: FC<Props> = ({ direction }) => {
     const { selectLeft, selectRight } = useSelectState();
-    console.log(selectLeft, selectRight);
     if (direction) {
         return (
             <SelectRightContainer>

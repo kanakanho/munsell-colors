@@ -10,8 +10,7 @@ type Props = {
 
 const ColorObjectContainer = styled.div`
     display: grid;
-    /* grid-template-columns: 1fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr 2fr; */
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(14, 1fr);
     grid-gap: 4px;
     padding: 2px;
 `;
